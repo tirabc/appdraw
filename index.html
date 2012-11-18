@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="Canvas Drawing App with HTML5 features & built with BackboneJS.">
+		<link href="css/foundation.css" rel="stylesheet">
+		<link href="css/app.css" rel="stylesheet">
+ 		<link href="css/farbtastic.css" rel="stylesheet"/>
+		<title>App</title>
+	</head>
+	<body id="main">
+	
+		<header class="row">
+			<h1 class="twelve columns"><img src=""/>&nbsp;AppDraw</h1>
+		</header>
+		
+		<section id="main-view" class="row"></section>
+		
+		<div id="popup"></div>
+		
+		<footer class="row">
+		</footer>
+	
+		<!-- Templates -->
+	
+		<script type="text/template" id="tpl-app">
+			<div class="two columns offset-by-two">
+				<ul class="side-nav vertical">
+					<li><a id="new"><img alt="New" src="img/black/png/doc_empty_icon&24.png"/></a></li>
+					<li><a id="save"><img alt="Save" src="img/black/png/save_icon&24.png"/></a></li>
+				 	<li><a id="preview"><img alt="Preview" src="img/black/png/eye_icon&24.png"/></a></li>
+				 	<li><a id="print"><img alt="Print" src="img/black/png/print_icon&24.png"/></a></li>
+  					<li><a id="rectangle"><img alt="Rectangle" src="img/black/png/shapes_icon&24.png"/></a></li>
+  					<li><a id="circle"><img alt="Circle" src="img/black/png/round_and_up_icon&24.png"/></a></li>
+  					<li><a id="text"><img alt="Text" src="img/black/png/text_letter_t_icon&24.png"/></a></li>
+  					<li><a id="clipart"><img alt="Clipart" src="img/black/png/picture_icon&24.png"/></a></li>
+				</ul>
+			</div>
+			<div class="eight columns">
+				<canvas id="c" width="500" height="800"></canvas>
+			</div>
+		</script>
+	
+		<script type="text/template" id="tpl-popup">
+			<div id="myModal" class="reveal-modal medium">
+				<h2>{{title}}</h2>
+				<p class="lead">{{baseline}}</p>
+				<p>{{{body}}}</p>
+				<a class="close close-reveal-modal">&#215;</a>
+			</div>
+		</script>
+		
+		<script type="text/template" id="tpl-tool-circle">
+			<div>
+				<input type="text" id="ipt"/>
+				<button id="createcircle" class="validate">Validate</button>
+			</div>
+		</script>
+		
+		<script type="text/template" id="tpl-tool-rectangle">
+			<div>
+				<input type="text" id="color"/>
+				<button id="createrectangle">Validate</button>
+			</div>
+		</script>
+		
+		<script type="text/template" id="tpl-tool-text">
+			<div>
+				<input type="text" id="mytext"/>
+				<div id="colorpicker"></div>
+				<input type="text" id="color"/>
+				<button id="createtext">Validate</button>
+			</div>
+		</script>
+		
+		<script type="text/template" id="tpl-tool-clipart">
+			<ul>
+				{{#images}}
+				<li>{{name}} - <img height="20" width="20" class="image" id="image{{id}}" src="{{url}}" data-url="{{url}}"/></li>
+				{{/images}}
+			</ul>
+			<button id="createclipart">Validate</button>
+		</script>
+		
+		<script type="text/template" id="tpl-tool-new">
+			<div>
+				<input type="text" value="" id="color"/>
+				<button id="createcanvas">Validate</button>
+			</div>
+		</script>
+	
+		<!-- Scripts -->
+
+		<script src="js/libs/jquery.min.js"></script>
+		<!--<script src="js/libs/jquery.js"></script>-->
+		<script src="js/libs/fabricjs.all.min.js"></script>
+		<script src="js/libs/farbtastic.js"></script>
+		<script src="js/libs/foundation.min.js"></script>
+		<script src="https://raw.github.com/kangax/fabric.js/master/lib/fonts/Delicious_500.font.js"></script>
+		<script src="js/libs/mustache.js"></script>
+		<script src="js/libs/underscore.min.js"></script>
+		<script src="js/libs/backbone.min.js"></script>
+		<script src="js/models/tool.js"></script>
+		<script src="js/views/popup.js"></script>
+		<script src="js/views/rectangle.js"></script>
+		<script src="js/views/circle.js"></script>
+		<script src="js/views/clipart.js"></script>
+		<script src="js/views/new.js"></script>
+		<script src="js/views/text.js"></script>
+		<script src="js/views/app.js"></script>
+		<script src="js/router.js"></script>
+		<script src="js/appdraw.js"></script>
+		<script>
+			$(document).ready(function () {
+				// On lance l'application une fois que notre HTML est chargé
+				appdraw.init();
+			}) ;
+		</script>
+		
+	</body>
+</html>
