@@ -3,11 +3,12 @@ var CircleView = PopupView.extend({
 		"click #createcircle": "createCircle"
 	},
 	createCircle: function(){
+		var color = $("#color").val();
 		var circle = new fabric.Circle({
 	        left:   180,
 	        top:    30,
 	        radius: 90,
-	        fill:   "#220099"
+	        fill:   color
 	    });
 	    window.canvas.add(circle);
 	    window.canvas.renderAll();
