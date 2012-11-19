@@ -9,7 +9,27 @@ var AppView = Backbone.View.extend({
 		'click #circle': 'circle',
 		'click #rectangle': 'rectangle',
 		'click #text': 'text',
-		'click #clipart': 'clipart'
+		'click #clipart': 'clipart',
+		'click #bringToFront': 'bringToFront',
+		'click #sendToBack': 'sendToBack',
+		'click #bringForward': 'bringForward',
+		'click #sendBackwards': 'sendBackwards'
+	},
+	bringToFront: function(){
+		var obj = window.canvas.getActiveObject();
+		window.canvas.bringToFront(obj);
+	},
+	sendToBack: function(){
+		var obj = window.canvas.getActiveObject();
+		window.canvas.sendToBack(obj);
+	},
+	bringForward: function(){
+		var obj = window.canvas.getActiveObject();
+		window.canvas.bringForward(obj);
+	},
+	sendBackwards: function(){
+		var obj = window.canvas.getActiveObject();
+		window.canvas.sendBackwards(obj);
 	},
 	newDoc: function(){
 		window.Tool = new Config({
@@ -48,10 +68,14 @@ var AppView = Backbone.View.extend({
 		alert('print');
 	},
 	text: function(){
+		var json = {fonts:[
+			{font_label:"Arial",font_value:"arial"}
+		]};
+		var body = Mustache.to_html($('#tpl-tool-text').html(),json);
 		window.Tool = new Config({
 			title: "New Text",
 			baseline: "Create now our new text",
-			body: $('#tpl-tool-text').html()
+			body: body
 		});
 		var popup = new TextView();
 		var html = popup.render();

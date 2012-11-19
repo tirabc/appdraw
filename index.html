@@ -35,6 +35,11 @@
   					<li><a id="circle"><img alt="Circle" src="img/black/png/round_icon&24.png"/></a></li>
   					<li><a id="text"><img alt="Text" src="img/black/png/text_letter_t_icon&24.png"/></a></li>
   					<li><a id="clipart"><img alt="Clipart" src="img/black/png/picture_icon&24.png"/></a></li>
+				 	<li><hr/></li>
+  					<li><a id="bringToFront"><img alt="bringToFront" src="img/black/png/arrow_top_icon&24.png"/></a></li>
+  					<li><a id="bringForward"><img alt="bringForward" src="img/black/png/br_up_icon&24.png"/></a></li>
+  					<li><a id="sendBackwards"><img alt="sendBackwards" src="img/black/png/br_down_icon&24.png"/></a></li>
+  					<li><a id="sendToBack"><img alt="sendToBack" src="img/black/png/arrow_bottom_icon&24.png"/></a></li>
 				</ul>
 			</div>
 			<div class="eight columns">
@@ -69,6 +74,11 @@
 		
 		<script type="text/template" id="tpl-tool-text">
 			<div>
+				<select id="fonts" name="fonts">
+					{{#fonts}}
+					<option value="{{font_value}}">{{font_label}}</option>
+					{{/fonts}}
+				</select>
 				<input type="text" id="mytext" placeholder="Type your text here ..."/>
 				<div id="colorpicker"></div>
 				<input type="text" id="color"/>

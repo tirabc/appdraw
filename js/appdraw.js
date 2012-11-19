@@ -9,7 +9,6 @@ var appdraw = {
 			e = e.originalEvent;
 			var mouse = window.canvas.getPointer(e);
 			var files = e.dataTransfer.files;
-			console.log(files);
 			for(i=0;i<files.length;i++){
 				var file = files[i];
 			    var reader = new FileReader();
@@ -21,6 +20,14 @@ var appdraw = {
 			    	});
 		        }
 			}
+		});
+		
+		$('body').bind('keydown', function(e){
+			e = e.originalEvent;
+			if (e.keyCode != 8) return;
+			e.preventDefault();
+			var obj = window.canvas.getActiveObject();
+			window.canvas.remove(obj);
 		});
 		
 		// Instantiate the router
