@@ -4,10 +4,10 @@ var DocView = PopupView.extend({
 		"click #createcanvas": "createCanvas"
 	},
 	createCanvas: function(){
-		
+		var color = $('#color').val();
 		// create the fabric canvas
 		window.canvas = new fabric.Canvas('c', {
-			backgroundColor: '#FFFFFF'
+			backgroundColor: color
 		});	
 		window.canvas.renderAll();
 	    this.close();

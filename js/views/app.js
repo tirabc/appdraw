@@ -22,9 +22,13 @@ var AppView = Backbone.View.extend({
 		$("#popup").html(html.el);
 		var page = this.render();
 		$("#main-view").append(page.el);
+		$('#colorpicker').farbtastic("#color");
 		$("#myModal").reveal();
 	},
 	preview: function(){
+		if(window.canvas == null || window.canvas == undefined)
+			return;
+			
 		window.canvas.deactivateAll();
     	var img = window.canvas.toDataURL("png");
     	window.Tool = new Config({

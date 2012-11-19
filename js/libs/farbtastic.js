@@ -243,9 +243,9 @@ jQuery._farbtastic = function (container, callback) {
         backgroundColor: fb.color,
         color: fb.hsl[2] > 0.5 ? '#000' : '#fff'
       });
-console.log(fb.color);
-console.log(fb.callback);
-$(fb.callback).val(fb.color);
+      
+	$(fb.callback).val(fb.color); // added by tirabc
+	
       // Change linked value
       $(fb.callback).each(function() {
         if (this.value && this.value != fb.color) {
