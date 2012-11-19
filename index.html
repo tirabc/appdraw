@@ -52,6 +52,7 @@
 		
 		<script type="text/template" id="tpl-tool-circle">
 			<div>
+				<div id="colorpicker"></div>
 				<input type="text" id="color"/>
 				<button id="createcircle" class="validate">Validate</button>
 			</div>
@@ -59,6 +60,7 @@
 		
 		<script type="text/template" id="tpl-tool-rectangle">
 			<div>
+				<div id="colorpicker"></div>
 				<input type="text" id="color"/>
 				<button id="createrectangle">Validate</button>
 			</div>
@@ -66,7 +68,7 @@
 		
 		<script type="text/template" id="tpl-tool-text">
 			<div>
-				<input type="text" id="mytext"/>
+				<input type="text" id="mytext" placeholder="Type your text here ..."/>
 				<div id="colorpicker"></div>
 				<input type="text" id="color"/>
 				<button id="createtext">Validate</button>
@@ -93,7 +95,6 @@
 
 		<script src="js/libs/jquery.min.js"></script>
 		<script src="js/libs/fabricjs.all.min.js"></script>
-		<script src="js/libs/farbtastic.js"></script>
 		<script src="js/libs/foundation.min.js"></script>
 		<script src="https://raw.github.com/kangax/fabric.js/master/lib/fonts/Delicious_500.font.js"></script>
 		<script src="js/libs/mustache.js"></script>
@@ -109,6 +110,7 @@
 		<script src="js/views/app.js"></script>
 		<script src="js/router.js"></script>
 		<script src="js/appdraw.js"></script>
+		<script src="js/libs/farbtastic.js"></script>
 		<script>
 			$(document).ready(function () {
 				// On lance l'application une fois que notre HTML est chargé

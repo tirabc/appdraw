@@ -52,7 +52,7 @@ var AppView = Backbone.View.extend({
 		var popup = new TextView();
 		var html = popup.render();
 		$("#popup").html(html.el);
-		$('#colorpicker').farbtastic('#color');
+		$('#colorpicker').farbtastic("#color");
 		$("#myModal").reveal();
 	},
 	circle: function(){
@@ -64,6 +64,7 @@ var AppView = Backbone.View.extend({
 		var popup = new CircleView();
 		var html = popup.render();
 		$("#popup").html(html.el);
+		$('#colorpicker').farbtastic("#color");
 		$("#myModal").reveal();
 	},
 	rectangle: function(){
@@ -75,6 +76,7 @@ var AppView = Backbone.View.extend({
 		var popup = new RectangleView();
 		var html = popup.render();
 		$("#popup").html(html.el);
+		$('#colorpicker').farbtastic("#color");
 		$("#myModal").reveal();
 	},
 	clipart: function(){
