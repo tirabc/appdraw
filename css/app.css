@@ -1,3 +1,12 @@
 body{
 	background: #EEEEEE;
 }
+
+#c{
+	border: solid 1px #CCC;
+}
+
+#tools li{
+	cursor: pointer;
+	text-align: center;
+}

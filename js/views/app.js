@@ -52,8 +52,8 @@ var AppView = Backbone.View.extend({
 		var popup = new TextView();
 		var html = popup.render();
 		$("#popup").html(html.el);
-		$("#myModal").reveal();
 		$('#colorpicker').farbtastic('#color');
+		$("#myModal").reveal();
 	},
 	circle: function(){
 		window.Tool = new Config({
