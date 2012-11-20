@@ -22,14 +22,6 @@ var appdraw = {
 			}
 		});
 		
-		$('body').bind('keydown', function(e){
-			e = e.originalEvent;
-			if (e.keyCode != 8) return;
-			e.preventDefault();
-			var obj = window.canvas.getActiveObject();
-			window.canvas.remove(obj);
-		});
-		
 		// Instantiate the router
 		var app_router = new AppRouter;
 		

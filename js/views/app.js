@@ -13,7 +13,12 @@ var AppView = Backbone.View.extend({
 		'click #bringToFront': 'bringToFront',
 		'click #sendToBack': 'sendToBack',
 		'click #bringForward': 'bringForward',
-		'click #sendBackwards': 'sendBackwards'
+		'click #sendBackwards': 'sendBackwards',
+		'click #sendToTrash': 'sendToTrash'
+	},
+	sendToTrash: function(){
+		var obj = window.canvas.getActiveObject();
+		window.canvas.remove(obj);
 	},
 	bringToFront: function(){
 		var obj = window.canvas.getActiveObject();
