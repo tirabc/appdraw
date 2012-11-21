@@ -74,7 +74,19 @@ var AppView = Backbone.View.extend({
 	},
 	text: function(){
 		var json = {fonts:[
-			{font_label:"Arial",font_value:"arial"}
+			{font_label:"Delicious_500",font_value:"Delicious_500"},
+			{font_label:"Quake_Cyr",font_value:"Quake_Cyr"},
+			{font_label:"OdessaScript_500",font_value:"OdessaScript_500"},
+			{font_label:"CA_BND_Web_Bold_700",font_value:"CA_BND_Web_Bold_700"},
+			{font_label:"DejaVu_Serif_400",font_value:"DejaVu_Serif_400"},
+			{font_label:"Encient_German_Gothic_400",font_value:"Encient_German_Gothic_400"},
+			{font_label:"Globus_500",font_value:"Globus_500"},
+			{font_label:"Modernist_One_400",font_value:"Modernist_One_400"},
+			{font_label:"Tallys_400",font_value:"Tallys_400"},
+			{font_label:"Terminator_Cyr",font_value:"Terminator_Cyr"},
+			{font_label:"Times_New_Roman",font_value:"Times_New_Roman"},
+			{font_label:"CrashCTT_400",font_value:"CrashCTT_400"},
+			{font_label:"Vampire95",font_value:"Vampire95"}
 		]};
 		var body = Mustache.to_html($('#tpl-tool-text').html(),json);
 		window.Tool = new Config({

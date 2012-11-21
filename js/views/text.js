@@ -4,9 +4,10 @@ var TextView = PopupView.extend({
 	},
 	createText: function(){
 		var mytext = $('#mytext').val();
+		var font = $('#myfont').val();
 		var color = $('#color').val();
 		window.text = new fabric.Text( mytext , { 
-		  fontFamily: 'Delicious_500', 
+		  fontFamily: font, 
 		  left: 100, 
 		  top: 100 ,
 		  fontSize: 40,
@@ -15,6 +16,7 @@ var TextView = PopupView.extend({
 		text.hasRotatingPoint = true;
 	    window.canvas.add(window.text);
 	    window.canvas.renderAll();
+	    window.canvas.setActiveObject(window.text);
 	    this.close();
 	}
 });
