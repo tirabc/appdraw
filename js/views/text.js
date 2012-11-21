@@ -12,6 +12,7 @@ var TextView = PopupView.extend({
 		  fontSize: 40,
 		  fill:  color
 		});
+		text.hasRotatingPoint = true;
 	    window.canvas.add(window.text);
 	    window.canvas.renderAll();
 	    this.close();

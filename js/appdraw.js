@@ -16,6 +16,7 @@ var appdraw = {
 		        reader.onloadend = function(e){
 		            fabric.Image.fromURL(e.target.result, function(img) {
 			        	var oImg = img.set({ left: mouse.x, top: mouse.y}).scale(1);
+						oImg.hasRotatingPoint = true;
 			        	window.canvas.add(oImg).renderAll();
 			    	});
 		        }

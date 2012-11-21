@@ -10,6 +10,7 @@ var CircleView = PopupView.extend({
 	        radius: 90,
 	        fill:   color
 	    });
+		circle.hasRotatingPoint = true;
 	    window.canvas.add(circle);
 	    window.canvas.renderAll();
 	    this.close();

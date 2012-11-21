@@ -11,6 +11,7 @@ var RectangleView = PopupView.extend({
 			left: 150,
 			fill: color
 	    });
+		rectangle.hasRotatingPoint = true;
 	    window.canvas.add(rectangle);
 	    window.canvas.renderAll();
 	    this.close();

@@ -5,7 +5,8 @@ var ClipartView = PopupView.extend({
 	},
 	selectClipart: function(e){
 		fabric.Image.fromURL($(e.target).attr('data-url'), function(img) {
-	        var oImg = img.set({ left: 100, top: 100,}).scale(1);
+	        var oImg = img.set({ left: 100, top: 100,}).scale(1); 
+			oImg.hasRotatingPoint = true;
 	        window.img = oImg;
 	    });
 	},
