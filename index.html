@@ -103,19 +103,30 @@
 		</script>
 		
 		<script type="text/template" id="tpl-tool-clipart">
-			<div class="panel radius">
-				<input type="file" name="own_img[]" multiple id="own_img" />
-				<button class="radius button small secondary" id="add_own_images">Add my own images</button>
-				<div id="list"></div>
-			</div>
-			
-			{{#images}}
-			<div class="left img_item"><img alt="{{name}}" title="{{name}}" class="image" id="image{{id}}" src="{{url}}" data-url="{{url}}"/></div>
-			{{/images}}
+			<div id="firstScene">
+				<div class="panel radius">
+					<input type="file" name="own_img[]" multiple id="own_img" />
+					<button class="radius button small secondary" id="add_own_images">Add my own images</button>
+					<div id="list"></div>
+				</div>
 				
-			<div class="twelve columns" id="action">
-				<button id="createclipart">Validate</button>
+				{{#images}}
+				<div class="left img_item"><img alt="{{name}}" title="{{name}}" class="image" id="image{{id}}" src="{{url}}" data-url="{{url}}"/></div>
+				{{/images}}
+					
+				<div class="twelve columns" id="action">
+					<button id="createclipart">Validate</button>
+				</div>
 			</div>
+			<div id="secondScene">
+				
+			</div>
+		</script>
+		
+		<script type="text/template" id="tpl-tool-edit-image">
+			
+			hello world
+			
 		</script>
 		
 		<script type="text/template" id="tpl-tool-new">
@@ -139,6 +150,7 @@
 		<script src="js/models/tool.js"></script>
 		<script src="js/views/popup.js"></script>
 		<script src="js/views/rectangle.js"></script>
+		<script src="js/views/edit_image.js"></script>
 		<script src="js/views/circle.js"></script>
 		<script src="js/views/clipart.js"></script>
 		<script src="js/views/new.js"></script>

@@ -14,7 +14,40 @@ var AppView = Backbone.View.extend({
 		'click #sendToBack': 'sendToBack',
 		'click #bringForward': 'bringForward',
 		'click #sendBackwards': 'sendBackwards',
-		'click #sendToTrash': 'sendToTrash'
+		'click #sendToTrash': 'sendToTrash',
+		'dblclick canvas': 'editObject'
+	},
+	editObject:function(e){
+		// get mouse position
+		var mouse = window.canvas.getPointer(e);
+		// get first object
+		var object = window.canvas.getActiveObject();
+		// get type of object
+		var type = object.type;
+		// route
+		switch(type){
+			case 'rect':
+			break;
+			case 'image':
+				this.editImage(object);
+			break;
+			case 'text':
+			break;
+			case 'circle':
+			break;
+		}
+	},
+	editImage: function(img){
+		console.log(img);
+		window.Tool = new Config({
+			title: "Edit Image",
+			baseline: "Edit your image now",
+			body: $('#tpl-tool-edit-image').html()
+		});
+		var popup = new EditImageView();
+		var html = popup.render();
+		$("#popup").html(html.el);
+		$("#myModal").reveal();
 	},
 	sendToTrash: function(){
 		var obj = window.canvas.getActiveObject();
@@ -145,6 +178,13 @@ var AppView = Backbone.View.extend({
 		var html = popup.render();
 		$("#popup").html(html.el);
 		$("#myModal").reveal();
+		
+		
+		//TEST
+		//window.canvas.clipTo = function(ctx) {
+  		//	ctx.arc(0, 0, 60, 0, Math.PI*2, true);
+  		//}
+  
 	},
 	initialize: function(){
 		_.bindAll(this,'render');
