@@ -1,12 +1,44 @@
 body{
-	background: #EEEEEE;
+	background: #EEEEEE url('../../gataway/backbonejs/img/bgnoise_lg.png');
+	padding-bottom: 40px;
 }
 
 #c{
 	border: solid 1px #CCC;
+	background: #EEEEEE;
 }
 
 #tools li{
 	cursor: pointer;
 	text-align: center;
+}
+
+.img_item{
+	border: solid 6px #CCC;
+	margin: 5px;
+}
+
+.img_item_selected{
+	border: solid 6px #333;
+	margin: 5px;
+}
+
+.image{
+	width: 100px;
+	height: 100px;
+}
+
+.lead{
+	border-bottom: solid 1px #CCC;
+}
+
+#list{
+	height: 100px;
+	width: 100%;
+	overflow: auto;
+}
+
+#list img{
+	height: 80px;
+	margin: 10px;
 }

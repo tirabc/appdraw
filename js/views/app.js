@@ -86,7 +86,9 @@ var AppView = Backbone.View.extend({
 			{font_label:"Terminator_Cyr",font_value:"Terminator_Cyr"},
 			{font_label:"Times_New_Roman",font_value:"Times_New_Roman"},
 			{font_label:"CrashCTT_400",font_value:"CrashCTT_400"},
-			{font_label:"Vampire95",font_value:"Vampire95"}
+			{font_label:"Vampire95",font_value:"Vampire95"},
+			{font_label:"Gruenewald VA",font_value:"Gruenewald VA"},
+			{font_label:"Little Daisy",font_value:"Little Daisy"}
 		]};
 		var body = Mustache.to_html($('#tpl-tool-text').html(),json);
 		window.Tool = new Config({
@@ -128,11 +130,13 @@ var AppView = Backbone.View.extend({
 		var images = [
 			{id:12, name: 'chat', url: 'files/chat.svg', backgroundColor: '#000000'},
 			{id:13, name: 'chien', url: 'files/chien.png', backgroundColor: '#000000'},
+			{id:14, name: 'grille', url: 'files/drawing.svg', backgroundColor: '#000000'}
 		];
 		var tpl = $('#tpl-tool-clipart').html();
 		var output = Mustache.to_html(tpl,{images:images});
 		
 		window.Tool = new Config({
+			size: 'expand',
 			title: "New Clipart",
 			baseline: "Create now our new image",
 			body: output

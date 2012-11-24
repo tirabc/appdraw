@@ -5,6 +5,7 @@ var appdraw = {
 		
 		// TODO bind the body drop event into the AppView
 		$('body').bind('drop', function(e){
+			e.stopPropagation()
 			e.preventDefault();
 			e = e.originalEvent;
 			var mouse = window.canvas.getPointer(e);

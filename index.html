@@ -17,6 +17,8 @@
  		<script src="https://raw.github.com/kangax/fabric.js/master/lib/fonts/CA_BND_Web_Bold_700.font.js"></script>
  		<script src="https://raw.github.com/kangax/fabric.js/master/lib/fonts/Delicious_500.font.js"></script>
  		<script src="https://raw.github.com/kangax/fabric.js/master/lib/fonts/CrashCTT_400.font.js"></script>
+ 		<script src="fonts/Gruenewald_VA_400.font.js"></script>
+ 		<script src="fonts/Little_Daisy_400-Little_Days_Alt_400-Little_Days_400.font.js"></script>
 		<title>App</title>
 	</head>
 	<body id="main">
@@ -30,12 +32,14 @@
 		<div id="popup"></div>
 		
 		<footer class="row">
+			<hr/>
+			<p class="right">by <a href="mailto:tirabc@gmail.com">Christian Barras</a></p>
 		</footer>
 	
 		<!-- Templates -->
 	
 		<script type="text/template" id="tpl-app">
-			<div class="one columns offset-by-three">
+			<div class="one columns">
 				<ul id="tools" class="side-nav vertical">
 					<li><a id="new"><img alt="New" src="img/black/png/doc_empty_icon&24.png"/></a></li>
 					<li><a id="save"><img alt="Save" src="img/black/png/save_icon&24.png"/></a></li>
@@ -54,16 +58,16 @@
   					<li><a id="sendToBack"><img alt="sendToBack" src="img/black/png/arrow_bottom_icon&24.png"/></a></li>
 				</ul>
 			</div>
-			<div class="eight columns">
+			<div class="eleven columns">
 				<canvas id="c" width="500" height="800"></canvas>
 			</div>
 		</script>
 	
 		<script type="text/template" id="tpl-popup">
-			<div id="myModal" class="reveal-modal medium">
+			<div id="myModal" class="reveal-modal {{size}}">
 				<h2>{{title}}</h2>
 				<p class="lead">{{baseline}}</p>
-				<p>{{{body}}}</p>
+				<p class="row">{{{body}}}</p>
 				<a class="close close-reveal-modal">&#215;</a>
 			</div>
 		</script>
@@ -99,12 +103,19 @@
 		</script>
 		
 		<script type="text/template" id="tpl-tool-clipart">
-			<ul>
-				{{#images}}
-				<li>{{name}} - <img height="20" width="20" class="image" id="image{{id}}" src="{{url}}" data-url="{{url}}"/></li>
-				{{/images}}
-			</ul>
-			<button id="createclipart">Validate</button>
+			<div class="panel radius">
+				<input type="file" name="own_img[]" multiple id="own_img" />
+				<button class="radius button small secondary" id="add_own_images">Add my own images</button>
+				<div id="list"></div>
+			</div>
+			
+			{{#images}}
+			<div class="left img_item"><img alt="{{name}}" title="{{name}}" class="image" id="image{{id}}" src="{{url}}" data-url="{{url}}"/></div>
+			{{/images}}
+				
+			<div class="twelve columns" id="action">
+				<button id="createclipart">Validate</button>
+			</div>
 		</script>
 		
 		<script type="text/template" id="tpl-tool-new">
@@ -118,10 +129,10 @@
 		<!-- Scripts -->
 
 		<script src="js/libs/jquery.min.js"></script>
-		<!--<script src="js/libs/fabricjs.all.min.js"></script>-->
-		<!--<script src="https://raw.github.com/kangax/fabric.js/master/dist/all.js"></script>-->
+		<!--<script src="js/libs/jquery.drop.js"></script>
+		<!--<script src="js/libs/fabricjs.all.min.js"></script>
+		<script src="https://raw.github.com/kangax/fabric.js/master/dist/all.js"></script>-->
 		<script src="js/libs/foundation.min.js"></script>
-		<script src="https://raw.github.com/kangax/fabric.js/master/lib/fonts/Delicious_500.font.js"></script>
 		<script src="js/libs/mustache.js"></script>
 		<script src="js/libs/underscore.min.js"></script>
 		<script src="js/libs/backbone.min.js"></script>
