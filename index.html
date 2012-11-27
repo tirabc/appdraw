@@ -43,6 +43,7 @@
 				<ul id="tools" class="side-nav vertical">
 					<li><a id="new"><img alt="New" src="img/black/png/doc_empty_icon&24.png"/></a></li>
 					<li><a id="save"><img alt="Save" src="img/black/png/save_icon&24.png"/></a></li>
+					<li><a id="load"><img alt="Load" src="img/black/png/loading_throbber_icon&24.png"/></a></li>
 				 	<li><a id="preview"><img alt="Preview" src="img/black/png/eye_icon&24.png"/></a></li>
 				 	<li><a id="print"><img alt="Print" src="img/black/png/print_icon&24.png"/></a></li>
 				 	<li><hr/></li>
@@ -125,6 +126,7 @@
 		
 		<script type="text/template" id="tpl-tool-edit-image">
 			
+			<canvas id="e" width="300" height="300"></canvas>
 			hello world
 			
 		</script>
@@ -141,7 +143,7 @@
 
 		<script src="js/libs/jquery.min.js"></script>
 		<!--<script src="js/libs/jquery.drop.js"></script>
-		<!--<script src="js/libs/fabricjs.all.min.js"></script>
+		<script src="js/libs/fabricjs.all.min.js"></script>
 		<script src="https://raw.github.com/kangax/fabric.js/master/dist/all.js"></script>-->
 		<script src="js/libs/foundation.min.js"></script>
 		<script src="js/libs/mustache.js"></script>

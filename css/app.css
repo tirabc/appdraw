@@ -3,7 +3,7 @@ body{
 	padding-bottom: 40px;
 }
 
-#c{
+#c,#e{
 	border: solid 1px #CCC;
 	background: #EEEEEE;
 }

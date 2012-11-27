@@ -5,6 +5,7 @@ var AppView = Backbone.View.extend({
 		'click #new': 'newDoc',
 		'click #preview': 'preview',
 		'click #save': 'save',
+		'click #load': 'load',
 		'click #print': 'print',
 		'click #circle': 'circle',
 		'click #rectangle': 'rectangle',
@@ -38,13 +39,12 @@ var AppView = Backbone.View.extend({
 		}
 	},
 	editImage: function(img){
-		console.log(img);
 		window.Tool = new Config({
 			title: "Edit Image",
 			baseline: "Edit your image now",
 			body: $('#tpl-tool-edit-image').html()
 		});
-		var popup = new EditImageView();
+		var popup = new EditImageView(img);
 		var html = popup.render();
 		$("#popup").html(html.el);
 		$("#myModal").reveal();
@@ -83,6 +83,20 @@ var AppView = Backbone.View.extend({
 		$('#colorpicker').farbtastic("#color");
 		$("#myModal").reveal();
 	},
+	load: function(){
+		// if stored Canvas we load it
+		if(localStorage.getItem('appdraw') != null || localStorage.getItem('appdraw') != undefined){
+			console.log(localStorage.getItem('appdraw'));
+			var local = localStorage.getItem('appdraw');
+			window.canvas = new fabric.Canvas('c',{backgroundColor: local.background});
+			window.canvas.loadFromJSON(local);
+			window.canvas.renderAll();
+			window.canvas.setActiveObject(window.canvas.item(0));
+		}else{
+			alert('Nothing to load');
+			return false;
+		}
+	},
 	preview: function(){
 		if(window.canvas == null || window.canvas == undefined)
 			return;
@@ -100,10 +114,14 @@ var AppView = Backbone.View.extend({
 		$("#myModal").reveal();
 	},
 	save: function(){
-		alert('save');
+		this.saved_data = JSON.stringify(window.canvas.toDatalessObject());//(canvas.toDatalessObject()
+		//console.log(this.saved_data);
+		localStorage.setItem('appdraw',this.saved_data);
+		//savedDataDLJSON = c1.toDatalessJSON() with savedDataDLJSON = JSON.stringify(c1.toDatalessJSON())
 	},
 	print: function(){
 		alert('print');
+		window.canvas.clear();
 	},
 	text: function(){
 		var json = {fonts:[
@@ -163,7 +181,18 @@ var AppView = Backbone.View.extend({
 		var images = [
 			{id:12, name: 'chat', url: 'files/chat.svg', backgroundColor: '#000000'},
 			{id:13, name: 'chien', url: 'files/chien.png', backgroundColor: '#000000'},
-			{id:14, name: 'grille', url: 'files/drawing.svg', backgroundColor: '#000000'}
+			{id:14, name: 'janvier', url: 'files/janvier.png', backgroundColor: '#000000'},
+			{id:14, name: 'fevrier', url: 'files/fevrier.png', backgroundColor: '#000000'},
+			{id:14, name: 'mars', url: 'files/mars.png', backgroundColor: '#000000'},
+			{id:14, name: 'avril', url: 'files/avril.png', backgroundColor: '#000000'},
+			{id:14, name: 'mai', url: 'files/mai.png', backgroundColor: '#000000'},
+			{id:14, name: 'juin', url: 'files/juin.png', backgroundColor: '#000000'},
+			{id:14, name: 'juillet', url: 'files/juillet.png', backgroundColor: '#000000'},
+			{id:14, name: 'aout', url: 'files/aout.png', backgroundColor: '#000000'},
+			{id:14, name: 'septembre', url: 'files/septembre.png', backgroundColor: '#000000'},
+			{id:14, name: 'octobre', url: 'files/octobre.png', backgroundColor: '#000000'},
+			{id:14, name: 'novembre', url: 'files/novembre.png', backgroundColor: '#000000'},
+			{id:14, name: 'decembre', url: 'files/decembre.png', backgroundColor: '#000000'}
 		];
 		var tpl = $('#tpl-tool-clipart').html();
 		var output = Mustache.to_html(tpl,{images:images});
@@ -179,12 +208,6 @@ var AppView = Backbone.View.extend({
 		$("#popup").html(html.el);
 		$("#myModal").reveal();
 		
-		
-		//TEST
-		//window.canvas.clipTo = function(ctx) {
-  		//	ctx.arc(0, 0, 60, 0, Math.PI*2, true);
-  		//}
-  
 	},
 	initialize: function(){
 		_.bindAll(this,'render');
