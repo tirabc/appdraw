@@ -84,8 +84,27 @@ var AppView = Backbone.View.extend({
 		$("#myModal").reveal();
 	},
 	load: function(){
+		if(localStorage.getItem('appdraw') != null || localStorage.getItem('appdraw') != undefined){
+			var data = {previous:JSON.parse(localStorage.getItem('appdraw'))};
+			var tpl = $('#tpl-tool-load').html();
+			var output = Mustache.to_html(tpl,data);
+			window.Tool = new Config({
+				title: "Load",
+				baseline: "Load your previous calendar",
+				body: output
+			});
+			var popup = new LoadView();
+			var html = popup.render();
+			$("#popup").html(html.el);
+			$("#myModal").reveal();
+		}else{
+			alert('Nothing to load');
+			return false;
+		}
+		/*
 		// if stored Canvas we load it
 		if(localStorage.getItem('appdraw') != null || localStorage.getItem('appdraw') != undefined){
+			
 			console.log(localStorage.getItem('appdraw'));
 			var local = localStorage.getItem('appdraw');
 			window.canvas = new fabric.Canvas('c',{backgroundColor: local.background});
@@ -95,7 +114,7 @@ var AppView = Backbone.View.extend({
 		}else{
 			alert('Nothing to load');
 			return false;
-		}
+		}*/
 	},
 	preview: function(){
 		if(window.canvas == null || window.canvas == undefined)
@@ -114,10 +133,17 @@ var AppView = Backbone.View.extend({
 		$("#myModal").reveal();
 	},
 	save: function(){
-		this.saved_data = JSON.stringify(window.canvas.toDatalessObject());//(canvas.toDatalessObject()
-		//console.log(this.saved_data);
-		localStorage.setItem('appdraw',this.saved_data);
-		//savedDataDLJSON = c1.toDatalessJSON() with savedDataDLJSON = JSON.stringify(c1.toDatalessJSON())
+		console.log(localStorage.getItem('appdraw'));
+		this.saved_data = window.canvas.toDatalessObject();
+		var _array = JSON.parse(localStorage.getItem('appdraw')) || [];
+		var data = {
+			title: window.canvas_title,
+			date: moment().format('LLLL'),
+			name: 'calendar'+Math.floor(Math.random()*100),
+			canvas_data: this.saved_data
+		};
+		_array.push(data);
+		localStorage.setItem('appdraw',JSON.stringify(_array));
 	},
 	print: function(){
 		alert('print');

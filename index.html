@@ -19,6 +19,10 @@
  		<script src="https://raw.github.com/kangax/fabric.js/master/lib/fonts/CrashCTT_400.font.js"></script>
  		<script src="fonts/Gruenewald_VA_400.font.js"></script>
  		<script src="fonts/Little_Daisy_400-Little_Days_Alt_400-Little_Days_400.font.js"></script>
+ 		<script>
+ 		Cufon("h1");
+		Cufon.replace('h1', { fontFamily: 'CrashCTT_400' });
+		</script>
 		<title>App</title>
 	</head>
 	<body id="main">
@@ -43,7 +47,7 @@
 				<ul id="tools" class="side-nav vertical">
 					<li><a id="new"><img alt="New" src="img/black/png/doc_empty_icon&24.png"/></a></li>
 					<li><a id="save"><img alt="Save" src="img/black/png/save_icon&24.png"/></a></li>
-					<li><a id="load"><img alt="Load" src="img/black/png/loading_throbber_icon&24.png"/></a></li>
+					<li><a id="load"><img alt="Load" src="img/black/png/folder_open_icon&24.png"/></a></li>
 				 	<li><a id="preview"><img alt="Preview" src="img/black/png/eye_icon&24.png"/></a></li>
 				 	<li><a id="print"><img alt="Print" src="img/black/png/print_icon&24.png"/></a></li>
 				 	<li><hr/></li>
@@ -91,6 +95,13 @@
 		
 		<script type="text/template" id="tpl-tool-text">
 			<div>
+				<h4>Exemples</h4>
+				
+				{{#fonts}}
+				<p style="font-family: {{font_label}}">{{font_label}}</p>
+				{{/fonts}}
+				
+				<hr/>
 				<select id="myfont" name="myfont">
 					{{#fonts}}
 					<option value="{{font_value}}">{{font_label}}</option>
@@ -131,8 +142,15 @@
 			
 		</script>
 		
+		<script type="text/template" id="tpl-tool-load">
+			{{#previous}}
+			<p><strong>{{date}}</strong>&nbsp;-&nbsp;{{title}}<button class="button radius load" data-date="{{date}}">Load</button></p>
+			{{/previous}}
+		</script>
+		
 		<script type="text/template" id="tpl-tool-new">
 			<div>
+				<input type="text" id="title"/>
 				<div id="colorpicker"></div>
 				<input type="text" id="color"/>
 				<button id="createcanvas">Validate</button>
@@ -149,6 +167,7 @@
 		<script src="js/libs/mustache.js"></script>
 		<script src="js/libs/underscore.min.js"></script>
 		<script src="js/libs/backbone.min.js"></script>
+		<script src="js/libs/moment.js"></script>
 		<script src="js/models/tool.js"></script>
 		<script src="js/views/popup.js"></script>
 		<script src="js/views/rectangle.js"></script>
@@ -156,6 +175,7 @@
 		<script src="js/views/circle.js"></script>
 		<script src="js/views/clipart.js"></script>
 		<script src="js/views/new.js"></script>
+		<script src="js/views/load.js"></script>
 		<script src="js/views/text.js"></script>
 		<script src="js/views/app.js"></script>
 		<script src="js/router.js"></script>
